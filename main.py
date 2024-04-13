@@ -19,7 +19,7 @@ class Pingo:
 
     def log_request(self, req, site, log_level=logging.INFO):
         logging.basicConfig(filename=self.log_file, level=log_level)
-        if req.status_code != SUCCESS_CODE:
+        if req.status_code is not SUCCESS_CODE:
             logger.error("ALERT: something went wrong!!", req.status_code)
         else:
             logger.info(f" {site}: ALL GOOD: everything seems operational")
@@ -27,6 +27,7 @@ class Pingo:
     def ping(self):
         for site in self.sites:
             req = requests.get(site)
+            print(req.text, req.headers)
             self.log_request(req, site)
 
 
