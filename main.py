@@ -46,5 +46,3 @@ class Pingo:
             req = requests.get(site)
             print(req.text, req.headers)
             self.log_request(req, site)
-
-
