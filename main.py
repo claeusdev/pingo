@@ -4,12 +4,29 @@ import logging
 logger = logging.getLogger(__name__)
 
 SUCCESS_CODE = 200
-#
-# take a json
-# {
-#     url: "",
-#     requests: [200, 301, 404, 500],
-# }
+
+
+"""
+site structure
+
+{
+    baseUrl: "https://nmanu.dev",
+    urls: ["projects", "about"],
+}
+
+should have some config of expected behaviour to check against.
+
+Such behavior includes:
+ - expected response code
+ - authenticated ? with token and stuff?
+ - headers??
+ - request types accepted?
+
+Should be able to parse page, save html state
+
+For another project:
+    - should be able to parse meta tags and see what competition is doing
+"""
 
 
 class Pingo:
@@ -31,6 +48,3 @@ class Pingo:
             self.log_request(req, site)
 
 
-my_site = Pingo(["https://adios.dev", "https://claeusdev.github.io"])
-
-my_site.ping()
